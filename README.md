@@ -7,5 +7,5 @@ important librarys used facerecognition,opencv,flask,websocket
 
 its developed by Flask 
 project maked by:-
-    Himal.B
+    Himal.B,
     Harish_kumar
