@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="container my-5">
+        <table class="table text-center table-bordered">
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Place
+                </th>
+                <th>
+                    Camera No
+                </th>
+                <th>
+                    Discription
+                </th>
+                <th>
+                  Auth token
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+
+            {% for locat in location %}
+
+            <tr>
+                <td>
+                    {{ locat.id }}
+                </td>
+                <td>
+                    {{ locat.place }}
+                </td>
+                <td>
+                    {{ locat.cam_no }}
+                </td>
+                <td>
+                    {{ locat.discription }}
+                </td>
+                <td>
+                    {{ locat.uid }}
+                </td>
+                <td>
+                    <a class="btn btn-success mr-2" href="{{ url_for('.update_location',id=locat.id) }}">Update</a>
+                    <a class="btn btn-danger ml-2" href="{{ url_for('.delete_location',id=locat.id) }}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+{% endblock %}

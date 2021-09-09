@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container my-4">
+  <table class="table text-center table-bordered">
+      <tr>
+          <th>
+              ID
+          </th>
+          <th>
+              Place
+          </th>
+          <th>
+              Camera No
+          </th>
+          <th>
+              Time
+          </th>
+      </tr>
+
+      {% for locat in location %}
+
+      <tr>
+          <td>
+              {{ locat.id }}
+          </td>
+          <td>
+              {{ locat.place }}
+          </td>
+          <td>
+              {{ locat.cam_no }}
+          </td>
+          <td>
+              {{ locat.time }}
+          </td>
+      </tr>
+      {% endfor %}
+  </table>
+</div>
+{% endblock %}

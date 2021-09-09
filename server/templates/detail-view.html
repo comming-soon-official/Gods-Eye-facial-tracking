@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-md-3">
+            <img src="/uploads/{{ person.file }}" alt="" class="img img-thumbnail">
+        </div>
+        <div class="col-9">
+            <div class="row  mx-1">
+                <div class="col-12">
+                    <h3 class="h3">
+                        {{ person.name }}
+                    </h3>
+                </div>
+                <div class="col-12">
+                    <p class="p">
+                        {{ person.disc }}
+                    </p>
+                </div>
+            </div>
+            <hr>
+            <h5 class="h5">
+              {% if person.live_track %}
+              Live tracking is enabled
+              {% else %}
+              Live tracking is disabled
+              {% endif %}
+            </h5>
+            <hr>
+            <div class="row my-4 mx-2">
+              <div class="col-6">
+                <a class="btn btn-success mr-2" href="{{ url_for('.update_person',id=person.id) }}">Update</a>
+              </div>
+              <div class="col-6">
+                <a class="btn btn-danger ml-2" href="/delete_person/{{ person.id }}">Delete</a>
+              </div>
+              </div>
+          </div>
+    </div>
+</div>
+
+<div class="container my-5">
+    <table class="table text-center table-bordered">
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Place
+            </th>
+            <th>
+                Camera No
+            </th>
+            <!-- <th>
+                Discription
+            </th> -->
+            <th>
+                Time
+            </th>
+            <!-- <th>
+                Action
+            </th> -->
+        </tr>
+
+        {% for locat in face_recognition_table %}
+
+        <tr>
+            <td>
+                {{ locat.id }}
+            </td>
+            <td>
+                {{ locat.place }}
+            </td>
+            <td>
+                {{ locat.cam_no }}
+            </td>
+            <td>
+                {{ locat.time }}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

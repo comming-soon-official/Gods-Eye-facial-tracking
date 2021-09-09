@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container list-photos mt-4">
+    <table class="table table-bordered text-center">
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Name
+            </th>
+            <!-- <th>
+                Discription
+            </th> -->
+            <th>
+              Live Track
+            </th>
+            <th>
+                Action
+            </th>
+            <!-- <th>
+                Photo
+            </th> -->
+        </tr>
+        {% for person in photo_list %}
+        <tr>
+            <td>
+                {{ person.id }}
+            </td>
+            <td>
+                {{ person.name }}
+            </td>
+            <!-- <td>
+                {{ person.disc }}
+            </td> -->
+            <td>
+              {% if person.live_track %}
+                Yes
+              {% else %}
+                No
+              {% endif %}
+            </td>
+            <td>
+                <a href="/view/{{ person.id }}" class="btn btn-primary">View</a>
+            </td>
+            <!-- <td>
+                <img src="/uploads/{{ person.file }}" alt="" class="img img-thumbnail" width="90px">
+            </td> -->
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

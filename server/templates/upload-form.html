@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container upload-form mt-4">
+    <div class="row">
+        <div class="col-4">
+
+          {% if update %}
+            <form action="/update_person/{{ id }}" enctype="multipart/form-data" method="post" class="form-group form-group-md">
+                <!-- <input type="file" name="person" id="person-upload" class="my-2"> -->
+                <input type="text" name="name" id="discription" class="form-control  my-1" placeholder="Name" value="{{ person.name }}">
+                <textarea type="text" name="disc" id="discription" class="form-control  my-1" placeholder="Discription">{{ person.disc }}</textarea>
+                {% if person.live_track %}
+                <input class="form-check-input  my-1 ml-0" type="checkbox" id="live_track" name="track" value="True" checked>
+                {% else %}
+                <input class="form-check-input  my-1 ml-0" type="checkbox" id="live_track" name="track" value="True">
+                {% endif %}
+                <label class="form-check-label ml-4" for="live_track">Live Track</label><br>
+                <button type="submit" class="btn btn-primary  my-1">Update</button>
+            </form>
+          {% else %}
+            <form action="/upload" enctype="multipart/form-data" method="post" class="form-group form-group-md">
+                <input type="file" name="person" id="person-upload" class="my-2">
+                <input type="text" name="name" id="discription" class="form-control  my-1" placeholder="Name">
+                <textarea type="text" name="disc" id="discription" class="form-control  my-1" placeholder="Discription"></textarea>
+                <input class="form-check-input  my-1 ml-0" type="checkbox" id="live_track" name="track" value="True">
+                <label class="form-check-label ml-4" for="live_track">Live Track</label><br>
+                <button type="submit" class="btn btn-primary  my-1">Upload</button>
+            </form>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
